@@ -1,0 +1,40 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+/* Landing Page Styling*/
+
+.Landing{
+    border-top: 1px solid rgb(207, 203, 203);
+    padding: 5vh 5vw;
+    width: 50vw;
+    margin: 10vh auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  img{
+    width: 25vw;
+    height: 45vh;
+  }
+  .routingpart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .routingpart span{
+    margin-right: 8px;
+    font-size: 1.5vmax;
+  }
+  .routingpart h4{
+    color: rgb(45, 93, 45);
+  }
+  .routingpart button{
+    color: rgb(45, 93, 45);
+    background-color: white;
+    padding: 5px 7px;
+    margin-top: 20px;
+    border: 1px solid rgb(45, 93, 45);
+    border-radius: 10px;
+  }
