@@ -5,8 +5,8 @@ import { Link ,useNavigate} from "react-router-dom";
 import axios from 'axios';
 const Formpage = () => {
     const Navigate = useNavigate()
-    const [input , setinput] = useState({Author : "",Location:"",image:"",Description:""})
-    const [value,setvalue] = useState("No File Chosen")
+    const [input , setInput] = useState({Author : "",Location:"",image:"",Description:""})
+    const [value,setValue] = useState("No File Chosen")
     const convertbase64 = (file)=> new Promise((res,rej)=>{
         const reader = new FileReader()
         reader.readAsDataURL(file)
@@ -17,16 +17,21 @@ const Formpage = () => {
         console.log("Hello")
         const file = e.target.files[0]
         const base64 = await convertbase64(file)
-        setinput({...input,image:base64})
-        setvalue(e.target.value)
+        console.log(base64)
+        setInput({...input,image:base64})
+        setValue(e.target.value)
     }
     const Submithandler =  (e)=>{
         e.preventDefault()
         if(!input.image){
+            console.log(input)
             alert("Please Post A Image")
         }else{
+            console.log(input)
             axios({
-                url:"https://instaclone-10x-back-end.herokuapp.com/",
+                // url:"https://instaclone-10x-back-end.herokuapp.com/",
+                // url:"http://localhost:4000/home",
+                url:"https://instaclone-backend-4cuf.onrender.com/home",
                 method:"POST",
                 headers :{
                 },
@@ -36,8 +41,8 @@ const Formpage = () => {
                }).catch((err)=>{
                 console.log(err)
                })
-               setinput({Author:"",Location:"",Description:"",image : ""})
-               setinput("No File Chosen")
+               setInput({Author:"",Location:"",Description:"",image : ""})
+               setValue("No File Chosen")
         }
     }  
     return (
@@ -62,11 +67,11 @@ const Formpage = () => {
                         <input type="file" id="file" onChange={(e)=> onupload(e)} required/>
                     </div>
                     <div className='part2'>
-                        <input type="text" id="Author" value={input.Author}  placeholder='Author' onChange={e => setinput({...input,Author:e.target.value})} required/>
-                        <input type="text" value={input.Location} id="Location" placeholder='Location' onChange={e => setinput({...input,Location:e.target.value})} required/>
+                        <input type="text" id="Author" value={input.Author}  placeholder='Author' onChange={e => setInput({...input,Author:e.target.value})} required/>
+                        <input type="text" value={input.Location} id="Location" placeholder='Location' onChange={e => setInput({...input,Location:e.target.value})} required/>
                     </div>
                     <div className='part3'>
-                        <input type="text" value={input.Description} placeholder='Description' id='Description' onChange={e => setinput({...input,Description:e.target.value})} required/>
+                        <input type="text" value={input.Description} placeholder='Description' id='Description' onChange={e => setInput({...input,Description:e.target.value})} required/>
                     </div>
                     <div className='part4'>
                     <button type='submit'>Post</button>

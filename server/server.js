@@ -1,3 +1,4 @@
+require("dotenv").config()
 const Express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -5,17 +6,7 @@ const PostModel = require("./Model.js")
 const app = Express()
 app.use(Express.json({limit:"30mb",extended:true}))
 app.use(cors())
-
-
-// mongoose.connect(Connection_Url).then(()=>{
-//     app.listen(Port,(err)=>{
-//         if(!err){
-//             console.log(`The Server running at ${Port} And Db Has Connected`)
-//         }
-//     })
-// }).catch((err)=>{
-//     console.log(err)
-// })
+const DATABASE=process.env.DATABASE
 
 app.listen(process.env.PORT || 4000,(err)=>{
   if(!err){
@@ -24,13 +15,19 @@ app.listen(process.env.PORT || 4000,(err)=>{
     console.log(err);
   }
 });
-mongoose.connect("mongodb+srv://SoumyashreeBaral:mamba1234@instaclone.807mbwx.mongodb.net/instacopy?retryWrites=true&w=majority",()=>{
+// mongoose.connect("mongodb://localhost/instacopy",()=>{
+//   console.log('connected to db');
+// },(err)=>{
+//   console.log(err);
+// })
+mongoose.connect(`${DATABASE}`,()=>{
   console.log('connected to db');
+  console.log(DATABASE)
 },(err)=>{
   console.log(err);
 })
 
- app.get("/",(req,res)=>{
+ app.get("/home",(req,res)=>{
     PostModel.find().then((posts)=>{
         res.status(200).json(posts)
     }).catch((err)=>{
@@ -38,7 +35,7 @@ mongoose.connect("mongodb+srv://SoumyashreeBaral:mamba1234@instaclone.807mbwx.mo
     })
  })
 
-app.post("/",(req,res)=>{
+app.post("/home",(req,res)=>{
     const date = new Date
     let finalDate = date + "" //converting object to str
     finalDate = finalDate.split(" ");//string to array

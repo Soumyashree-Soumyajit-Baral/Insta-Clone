@@ -37,4 +37,5 @@
     margin-top: 20px;
     border: 1px solid rgb(45, 93, 45);
     border-radius: 10px;
+    cursor: pointer;
   }

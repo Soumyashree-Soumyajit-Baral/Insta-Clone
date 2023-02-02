@@ -9,7 +9,7 @@ const Landingpage = () => {
         <img src="https://tse3.mm.bing.net/th?id=OIP.JvJlzAtZEMQAIKPuJ_RjgAHaFj&pid=Api&P=0" alt=''/>
         <div className='routingpart'>
           <h4><span>10X</span><span>Team</span><span>04</span></h4>
-         <Link to='/postview'><button type='button'>Enter</button></Link> 
+         <Link to='/postview'><button type='button' className='enter'>Enter</button></Link> 
         </div>
       </div>
   )

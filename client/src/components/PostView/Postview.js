@@ -9,7 +9,9 @@ import axios from "axios";
 function Postview() {
     const [APIData, setAPIData] = useState([]);
     useEffect(() => {
-        axios.get("https://instaclone-10x-back-end.herokuapp.com/").then((res)=>{
+        // axios.get("https://instaclone-10x-back-end.herokuapp.com/").then((res)=>{
+        // axios.get("http://localhost:4000/home").then((res)=>{
+        axios.get("https://instaclone-backend-4cuf.onrender.com/home").then((res)=>{
             let data = res.data.reverse()
             setAPIData(data)
         }).catch((err)=>{
